@@ -1,108 +1,71 @@
-# License-Plate-RecognitionLicense Plate Recognition
-This project is focused on detecting and recognizing license plates from images using a combination of YOLOv5 for detection and Tesseract OCR for recognition.
+_**License Plate Recognition**_
 
-Table of Contents
-Introduction
-Features
-Installation
-Usage
-Dataset
-Training the Model
-Testing the Model
-Results
-Contributing
-License
-Introduction
-The goal of this project is to develop an automated system for license plate recognition using deep learning techniques. It leverages the YOLOv5 model for object detection to locate license plates in images and uses Tesseract OCR to extract the text from these plates.
+![image](https://github.com/Srinivasan2821/License-Plate-Recognition/assets/154582529/a97aefd5-a705-448e-b4b2-177636f5a586)
 
-Features
-Detects license plates in images.
-Recognizes and extracts text from the detected license plates.
-Saves the results in CSV files.
-Installation
-Prerequisites
-Python 3.7+
-PyTorch
-OpenCV
-Tesseract OCR
-Clone the Repository
-bash
-Copy code
-git clone https://github.com/yourusername/License-Plate-Recognition.git
-cd License-Plate-Recognition
-Install Dependencies
-bash
-Copy code
-pip install -r requirements.txt
-Setup Tesseract OCR
-Install Tesseract OCR on your system:
+This project is designed to automate the process of license plate recognition using a combination of YOLOv5 for object detection and Tesseract OCR for optical character recognition.
 
-For Ubuntu:
+**Table of Contents**
+  Introduction
+  Features
+  Installation
+  Usage
+  Directory Structure
+  Dataset
+  Training the Model
+  Testing the Model
+  Results
+  Contributing
+  License
+  
+**Introduction**
+The aim of this project is to develop an automated system capable of detecting and recognizing license plates from images. It utilizes YOLOv5, a state-of-the-art object detection model, to accurately identify the location of license plates in images. Once detected, Tesseract OCR is used to extract the text from these license plates.
 
-bash
-Copy code
-sudo apt-get update
-sudo apt-get install -y tesseract-ocr
-For Windows:
+**Features**
+**License Plate Detection**: Uses YOLOv5 to detect license plates in images.
+**Text Recognition:** Extracts text from the detected license plates using Tesseract OCR.
+**CSV Output:** Saves the results, including image names and detected plate numbers, in CSV files for further analysis.
 
-Download the installer from here and add Tesseract to your system's PATH.
+**Installation**
 
-Usage
+**Prerequisites**
+Before you begin, ensure you have Python 3.7 or higher installed on your system. You will also need to install PyTorch, OpenCV, and Tesseract OCR.
+
+**Steps**
+**Clone the Repository:** Obtain the project files by cloning the GitHub repository.
+**Install Dependencies:** Install all necessary Python packages listed in the requirements.txt file.
+**Setup Tesseract OCR:** Install Tesseract OCR on your system. For Ubuntu, use the apt-get package manager, and for Windows, download the installer from the Tesseract OCR GitHub page and add it to your system's PATH.
+
+**Usage**
+**Prepare Test Images:** Place your test images in the designated test directory within the project folder.
+**Run the Main Script:** Execute the main script to perform detection and OCR on the test images. The results will be saved in the output directory.
 Directory Structure
-Ensure your project directory has the following structure:
+The project should have a specific directory structure to function correctly. Key directories include:
 
-scss
-Copy code
-License-Plate-Recognition/
-├── yolov5/
-│   ├── models/
-│   ├── utils/
-│   ├── detect.py
-│   └── ... (other YOLOv5 files)
-├── test/
-│   └── ... (test images)
-├── output/
-│   └── ... (output files will be saved here)
-├── requirements.txt
-└── main.py
-Running the Code
-Place your test images in the test directory.
+**yolov5:** Contains the YOLOv5 model files and scripts.
+**test:** This is where you place your test images.
+**output:** The results of the detection and OCR processes will be saved here.
 
-Run the main script:
+**Dataset**
+You can use any dataset that includes images of vehicles with visible license plates. Ensure that your dataset is properly organized and split into training and testing sets. The YOLOv5 model requires data to be in a specific format with corresponding label files.
 
-bash
-Copy code
-python main.py
-The script will process the images, perform detection and OCR, and save the results in the output directory.
+**Training the Model**
+If you need to train your own YOLOv5 model:
 
-Dataset
-You can use any dataset containing images of vehicles with visible license plates. Ensure the dataset is split into training and testing sets appropriately.
-
-Training the Model
-If you need to train your YOLOv5 model, follow these steps:
-
-Prepare the dataset: Ensure your dataset is in the YOLO format (images and corresponding label files).
-
-Train the YOLOv5 model:
-
-bash
-Copy code
-cd yolov5
-python train.py --img 640 --batch 16 --epochs 100 --data your_dataset.yaml --weights yolov5s.pt --cache
-Replace your_dataset.yaml with your dataset configuration file.
-
-Save the trained model weights in the runs/train/exp/weights/ directory.
+**Prepare the Dataset:** Ensure your dataset is formatted correctly for YOLOv5.
+**Train the Model:** Run the training script with your dataset to train the YOLOv5 model. The trained model weights will be saved in the specified directory.
 Testing the Model
-To test the trained YOLOv5 model on new images, ensure your test images are placed in the test directory and run the main.py script as mentioned in the usage section.
 
+**To test the trained YOLOv5 model:**
+**Place Test Images:** Ensure your test images are in the correct directory.
+**Run the Main Script:** Execute the script to process the images. The script will use the trained model to detect license plates and perform OCR to extract the text.
 Results
-The results of the detection and OCR will be saved in the output directory:
+The results of the license plate detection and OCR processes are saved in the output directory.
 
-plate_numbers.csv: Contains image names and the recognized plate numbers.
-bounding_boxes.csv: Contains image names and bounding box coordinates of the detected plates.
+**The output includes:**
+A CSV file containing the image names and the recognized license plate numbers.
+Another CSV file listing the bounding box coordinates for each detected license plate.
 Contributing
-Contributions are welcome! Please open an issue or submit a pull request if you have any improvements or new features to suggest.
+Contributions to this project are welcome. If you have any suggestions or improvements, please open an issue or submit a pull request on GitHub.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
+**License**
+This project is licensed under the MIT License. Refer to the LICENSE file for more details.
